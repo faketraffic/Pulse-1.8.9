@@ -1,3 +1,10 @@
 # Project exclude paths
 /target/
 /.idea/
+
+# Minecraft runtime files
+/logs/
+/resourcepacks/
+/saves/
+usercache.json
+options.txt
