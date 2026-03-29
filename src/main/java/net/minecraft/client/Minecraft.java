@@ -1,5 +1,8 @@
 package net.minecraft.client;
 
+import com.pulse.Pulse;
+import com.pulse.event.events.EventKey;
+
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -597,6 +600,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         }
 
         this.renderGlobal.makeEntityOutlineShader();
+
+        Pulse.getInstance().init();
     }
 
     private void registerMetadataSerializers()
@@ -624,7 +629,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private void createDisplay() throws LWJGLException
     {
         Display.setResizable(true);
-        Display.setTitle("Minecraft 1.8.9");
+        Display.setTitle(Pulse.NAME + " v" + Pulse.VERSION + " | Minecraft 1.8.9");
 
         try
         {
@@ -1909,6 +1914,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                 if (Keyboard.getEventKeyState())
                 {
                     KeyBinding.onTick(k);
+                    Pulse.getInstance().getEventBus().post(new EventKey(k));
+                    Pulse.getInstance().getModuleManager().onKeyPress(k);
                 }
 
                 if (this.debugCrashKeyPressTime > 0L)

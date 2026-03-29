@@ -1,5 +1,8 @@
 package net.minecraft.client.gui;
 
+import com.pulse.Pulse;
+import com.pulse.event.events.EventRender2D;
+
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -356,6 +359,8 @@ public class GuiIngame extends Gui
             this.overlayPlayerList.updatePlayerList(true);
             this.overlayPlayerList.renderPlayerlist(i, scoreboard, scoreobjective1);
         }
+
+        Pulse.getInstance().getEventBus().post(new EventRender2D());
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
