@@ -1,8 +1,10 @@
 package com.pulse.module;
 
 import com.pulse.Pulse;
+import com.pulse.module.render.ArrayList;
+import com.pulse.module.render.ClickGuiModule;
+import com.pulse.module.render.HUD;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,10 +13,16 @@ import java.util.stream.Collectors;
  */
 public class ModuleManager {
 
-    private final List<Module> modules = new ArrayList<>();
+    private final List<Module> modules = new java.util.ArrayList<>();
 
     public void init() {
-        //Pulse.LOGGER.info("Loaded {} test", modules.size());
+        register(new HUD());
+        register(new ArrayList());
+        register(new ClickGuiModule());
+
+        // Enable defaults
+        getModule(HUD.class).setEnabled(true);
+        getModule(ArrayList.class).setEnabled(true);
     }
 
 

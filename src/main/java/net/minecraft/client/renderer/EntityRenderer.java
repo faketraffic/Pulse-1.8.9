@@ -2037,9 +2037,9 @@ public class EntityRenderer implements IResourceManagerReloadListener
      */
     private FloatBuffer setFogColorBuffer(float red, float green, float blue, float alpha)
     {
-        this.fogColorBuffer.clear();
+        ((java.nio.Buffer) this.fogColorBuffer).clear();
         this.fogColorBuffer.put(red).put(green).put(blue).put(alpha);
-        this.fogColorBuffer.flip();
+        ((java.nio.Buffer) this.fogColorBuffer).flip();
         return this.fogColorBuffer;
     }
 

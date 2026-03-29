@@ -32,16 +32,18 @@ public class ClippingHelperImpl extends ClippingHelper
 
     public void init()
     {
-        this.projectionMatrixBuffer.clear();
-        this.modelviewMatrixBuffer.clear();
-        this.field_78564_h.clear();
+        ((java.nio.Buffer) this.projectionMatrixBuffer).clear();
+        ((java.nio.Buffer) this.modelviewMatrixBuffer).clear();
+        ((java.nio.Buffer) this.field_78564_h).clear();
         GlStateManager.getFloat(2983, this.projectionMatrixBuffer);
         GlStateManager.getFloat(2982, this.modelviewMatrixBuffer);
         float[] afloat = this.projectionMatrix;
         float[] afloat1 = this.modelviewMatrix;
-        this.projectionMatrixBuffer.flip().limit(16);
+        ((java.nio.Buffer) this.projectionMatrixBuffer).flip();
+        ((java.nio.Buffer) this.projectionMatrixBuffer).limit(16);
         this.projectionMatrixBuffer.get(afloat);
-        this.modelviewMatrixBuffer.flip().limit(16);
+        ((java.nio.Buffer) this.modelviewMatrixBuffer).flip();
+        ((java.nio.Buffer) this.modelviewMatrixBuffer).limit(16);
         this.modelviewMatrixBuffer.get(afloat1);
         this.clippingMatrix[0] = afloat1[0] * afloat[0] + afloat1[1] * afloat[4] + afloat1[2] * afloat[8] + afloat1[3] * afloat[12];
         this.clippingMatrix[1] = afloat1[0] * afloat[1] + afloat1[1] * afloat[5] + afloat1[2] * afloat[9] + afloat1[3] * afloat[13];

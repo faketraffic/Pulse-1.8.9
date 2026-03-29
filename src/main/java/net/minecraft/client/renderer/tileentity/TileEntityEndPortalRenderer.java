@@ -119,9 +119,9 @@ public class TileEntityEndPortalRenderer extends TileEntitySpecialRenderer<TileE
 
     private FloatBuffer func_147525_a(float p_147525_1_, float p_147525_2_, float p_147525_3_, float p_147525_4_)
     {
-        this.field_147528_b.clear();
+        ((java.nio.Buffer) this.field_147528_b).clear();
         this.field_147528_b.put(p_147525_1_).put(p_147525_2_).put(p_147525_3_).put(p_147525_4_);
-        this.field_147528_b.flip();
+        ((java.nio.Buffer) this.field_147528_b).flip();
         return this.field_147528_b;
     }
 }

@@ -60,9 +60,9 @@ public class RenderHelper
      */
     private static FloatBuffer setColorBuffer(float p_74521_0_, float p_74521_1_, float p_74521_2_, float p_74521_3_)
     {
-        colorBuffer.clear();
+        ((java.nio.Buffer) colorBuffer).clear();
         colorBuffer.put(p_74521_0_).put(p_74521_1_).put(p_74521_2_).put(p_74521_3_);
-        colorBuffer.flip();
+        ((java.nio.Buffer) colorBuffer).flip();
         return colorBuffer;
     }
 

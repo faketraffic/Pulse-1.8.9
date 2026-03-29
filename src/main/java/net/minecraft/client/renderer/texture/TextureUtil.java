@@ -285,9 +285,10 @@ public class TextureUtil
             aint = updateAnaglyph(p_110994_0_);
         }
 
-        dataBuffer.clear();
+        ((java.nio.Buffer) dataBuffer).clear();
         dataBuffer.put(aint, p_110994_1_, p_110994_2_);
-        dataBuffer.position(0).limit(p_110994_2_);
+        ((java.nio.Buffer) dataBuffer).position(0);
+        ((java.nio.Buffer) dataBuffer).limit(p_110994_2_);
     }
 
     static void bindTexture(int p_94277_0_)

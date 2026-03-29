@@ -1,7 +1,12 @@
 package com.pulse.module;
 
 import com.pulse.Pulse;
+import com.pulse.setting.Setting;
 import net.minecraft.client.Minecraft;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
     Author: Plusbox
@@ -13,6 +18,7 @@ public abstract class Module {
     private final String name;
     private final String description;
     private final Category category;
+    private final List<Setting<?>> settings = new ArrayList<>();
     private int keyBind;
     private boolean enabled;
 
@@ -65,5 +71,13 @@ public abstract class Module {
 
     public boolean isEnabled() {
         return enabled;
+    }
+
+    protected void addSettings(Setting<?>... settings) {
+        this.settings.addAll(Arrays.asList(settings));
+    }
+
+    public List<Setting<?>> getSettings() {
+        return settings;
     }
 }

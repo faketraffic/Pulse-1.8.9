@@ -3,6 +3,7 @@ package com.pulse;
 import com.pulse.command.CommandManager;
 import com.pulse.event.EventBus;
 import com.pulse.module.ModuleManager;
+import com.pulse.util.font.FontManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,13 +18,14 @@ public class Pulse {
     private EventBus eventBus;
     private ModuleManager moduleManager;
     private CommandManager commandManager;
+    private FontManager fontManager;
 
     public void init() {
-        //LOGGER.info("Initializing {} v{}", NAME, VERSION);
-
         eventBus = new EventBus();
         moduleManager = new ModuleManager();
         commandManager = new CommandManager();
+        fontManager = FontManager.getInstance();
+        fontManager.init();
 
         moduleManager.init();
         commandManager.init();
@@ -52,5 +54,9 @@ public class Pulse {
 
     public CommandManager getCommandManager() {
         return commandManager;
+    }
+
+    public FontManager getFontManager() {
+        return fontManager;
     }
 }
